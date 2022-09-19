@@ -2,9 +2,7 @@
 
 ## Herkese Selamlar
 
-Bu proje, Unity ile yaptığım bazı oyunlarda **çok fazla level dizaynı** yapmam gerektiği zamanlarda daha hızlı bir şekilde dizaynlar yapabilmek için oluşturduğum bir projem.
-
-Bu projeyi yapmamdaki amaç; Unity ile 3D oyun yaparken ki süreçte levellar dizayn ederken harcadığım süreyi kısaltabilmek.
+Unity ile yaptığım bazı oyunlarda **çok fazla level dizaynı** yapmam gerekiyor. Bu süreci daha hızlı bir şekilde ilerletebilmek ve kısa sürede bir çok level dizaynını tamamlayabilmek için bu projeyi oluşturdum.
 
 Henüz geliştirmekte olduğum bu projemde v0.1.0'ı oluşturdum ve sizlere sunuyorum.
 
@@ -17,11 +15,11 @@ Henüz geliştirmekte olduğum bu projemde v0.1.0'ı oluşturdum ve sizlere sunu
 
 ## Uygulama Hakkında
 
-Uygulama içerisindeki amaç, oyun platformları üzerinde çok fazla level gerektiren oyunların level dizaynlarındaki harcana süreci kısaltmak ve bu levelları bir biriyle karıştırarak daha fazla sonuç elde edebilmek.
+Uygulama içerisindeki amaç, oyun platformları üzerinde çok fazla level gerektiren oyunların level dizaynlarındaki harcanan süreyi kısaltmak ve bu levelları  karıştırarak daha fazla sonuç elde edebilmek.
 
 Levelları oluştururken 2 farklı görüntü hazırlamamız gerekiyor. Birinci görüntü siyah-beyaz tonlarında bir görsel olmalı. Bu görsel bize level'ın yeryüzü şeklini oluşturacak.
 
-İkinci görüntü ise bu görüntü üzerine yerleştirilecek nesnelerin yerlerini belirtecek olan görsel. Yerleştirilmek istenen her farklı nesne için ayrı bir renk kullanılması gerekiyor. 
+İkinci görüntü ise bu level'ın üzerine yerleştirilecek nesnelerin yerlerini belirtecek olan görsel. Yerleştirilmek istenen her farklı nesne için ayrı bir renk kullanılması gerekiyor. 
 
 Oluşturulan görsellerde kullanılan renkler RGBA(0-1) boyutunda Script'in Inspector üzerindeki değerlerine eklenerek 'Alpha' değerleri 1'e ayarlanıyor.
 
