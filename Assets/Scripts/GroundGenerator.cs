@@ -17,11 +17,15 @@ public class GroundGenerator : MonoBehaviour
     [SerializeField] private GameObject groundObject;
     [Tooltip("Renge göre oluþturulacak nesneleri ekleyiniz.   (Nesne sýrasý groundColors[] dizisindeki rengiyle ayný sýrada olmalý.)")]
     [SerializeField] private GameObject[] placeableObjects;
+    [Tooltip("Þimdilik sadece YOL belirtmek için kullanýlan material eklenmeli.")]
+    [SerializeField] private Material[] materialObjects;
     [Header("COLORS")]
     [Tooltip("Görsel üzerinde kullandýðýnýz renkleri giriniz.")]
     [SerializeField] private Color[] groundColors;
     [Tooltip("Görsel üzerinde kullandýðýnýz renkleri giriniz.    (Renk sýrasý placeableObjects[] dizisindeki nesnesiyle ayný sýrada olmalý.)")]
     [SerializeField] private Color[] objectsColors;
+    [Tooltip("Material'i deðiþecek rengi belirtiniz. (Þimdilik sadece YOL için geçerli.)")]
+    [SerializeField] private Color[] roadsColors;
 
 
     private void Start()
@@ -68,7 +72,7 @@ public class GroundGenerator : MonoBehaviour
 
                 /* OLUSTURULACAK GROUND YUKSEKLIGI SECILIR VE OLUSTURULUR */
                 
-                Debug.Log(cGround);
+                //Debug.Log(cGround);
 
                 for (int k = 0; k < groundColors.Length; k++)
                 {
@@ -84,10 +88,28 @@ public class GroundGenerator : MonoBehaviour
                             grnd.transform.localScale = scale;
                             scale.y -= k;
 
+                            /* YOL BELIRLENIR VE YERLESTIRILIR */
+                            for (int i = 0; i < roadsColors.Length; i++)
+                            {
+
+                                if (cObjects == roadsColors[i])
+                                {
+                                    RaycastHit rayHit;
+                                    // Buradaki ayar raycast'in ground nesnesinin 0.5 birim üstünde baþlayýp 0.5 birim içerisine girmesini saðlýyor. Bu sayede kendisine temas edebiliyoruz.
+                                    // Oynatýmý durdurduktan sonra saðlarsanýz ray'lerin görünümünü görebilirsiniz.
+                                    Debug.DrawRay(spawnPositions[counter] + (Vector3.up * (k * 0.5f)) + Vector3.up, Vector3.down);
+                                    if (Physics.Raycast(spawnPositions[counter] + (Vector3.up * (k * 0.5f)) + Vector3.up, Vector3.down, out rayHit))
+                                    {
+                                        rayHit.collider.gameObject.GetComponent<Renderer>().material = materialObjects[i];
+                                    }
+                                }
+
+                            }
+
                             /* OLUSTURULACAK NESNE SECILIR VE OLUSTURULUR */
                             for (int j = 0; j < objectsColors.Length; j++)
                             {
-                                if (cObjects.Equals(objectsColors[j]))
+                                if (cObjects == objectsColors[j])
                                 {
                                     /* DEGISTIRILEN SCALE'E GORE YUKSEKLIK AYARI */
                                     spawnPositions[counter].y += (k * 0.5f) + 1;
@@ -95,6 +117,10 @@ public class GroundGenerator : MonoBehaviour
                                     break;
                                 }
                             }
+
+                            
+                            
+
                             break;
                         }
                     }
